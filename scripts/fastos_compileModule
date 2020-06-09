@@ -1,0 +1,46 @@
+#!/bin/bash
+if [ $# != 1 ]; then
+	echo 'This script needs the module name as parameter'
+	exit 1
+fi
+
+modulePath="../src/$1"
+objPath="../out/objects/$1"
+extraPath="../out/extra/$1"
+
+echo ">>>Compiling module $1 at $modulePath"
+
+if [ -d $objPath ]; then
+	echo '	Removing old objets'
+	rm -r $objPath
+	rm -r $extraPath
+fi
+mkdir $objPath
+mkdir $extraPath
+/usr/local/cross/amd64/bin/amd64-elf-g++ -c `find $modulePath -name '*.cpp'` -ffreestanding -I"../src/fastlib" -Wall -Wextra -fno-exceptions -fno-rtti -Wa,-adhln=$extraPath/assembly.s -g -masm=intel
+
+nasmFiles=`find $modulePath -name '*.asm'`
+if [ "$nasmFiles" != "" ]; then
+	for f in $nasmFiles ; do
+		echo "Compiling nasm : $f"
+		nasm -f elf64 $f -o $objPath/"$(basename -s .asm $f)".o
+	done
+fi
+
+gasFiles=`find $modulePath -name '*.S'`
+if [ "$gasFiles" != "" ]; then
+	for f in $gasFiles ; do
+		echo "Compiling gas : $f"
+		/usr/local/cross/amd64/bin/amd64-elf-as -o $objPath/"$(basename -s .S $f)".o $f
+	done
+fi
+
+if [ $? != 0 ]; then
+	echo '	Error during compilation, cleaning and stopping'
+	rm *.o
+	exit 2
+fi
+
+mv *.o $objPath/
+echo 'Compilation OK<<<'
+exit 0

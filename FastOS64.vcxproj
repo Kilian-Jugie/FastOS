@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{CDB34A03-BE8E-435B-BAE9-A96069725506}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeOutput>.\scripts\fastos_run.bat</NMakeOutput>
+    <NMakePreprocessorDefinitions>
+    </NMakePreprocessorDefinitions>
+    <IncludePath>E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src\fastlib;$(IncludePath)</IncludePath>
+    <NMakeBuildCommandLine>cd .\scripts&amp; .\fastos_compileAll.bat</NMakeBuildCommandLine>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <NMakeOutput>.\scripts\fastos_run.bat</NMakeOutput>
+    <NMakePreprocessorDefinitions>
+    </NMakePreprocessorDefinitions>
+    <IncludePath>E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src\fastlib;$(IncludePath)</IncludePath>
+    <NMakeBuildCommandLine>cd .\scripts&amp; .\fastos_compileAll.bat</NMakeBuildCommandLine>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeOutput>.\scripts\fastos_run.bat</NMakeOutput>
+    <NMakePreprocessorDefinitions>
+    </NMakePreprocessorDefinitions>
+    <IncludePath>E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src\fastlib;$(IncludePath)</IncludePath>
+    <NMakeBuildCommandLine>cd .\scripts&amp; .\fastos_compileAll.bat</NMakeBuildCommandLine>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <NMakeOutput>.\scripts\fastos_run.bat</NMakeOutput>
+    <NMakePreprocessorDefinitions>
+    </NMakePreprocessorDefinitions>
+    <IncludePath>E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src\fastlib;$(IncludePath)</IncludePath>
+    <NMakeBuildCommandLine>cd .\scripts&amp; .\fastos_compileAll.bat</NMakeBuildCommandLine>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="src\fastlib\FastAsm.asm" />
+    <None Include="src\fastlib\interrupt.asm" />
+    <None Include="src\kernel\memory\a20.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\fastlib\FastAsm.h" />
+    <ClInclude Include="src\fastlib\FastConstants.h" />
+    <ClInclude Include="src\fastlib\FastDefines.h" />
+    <ClInclude Include="src\fastlib\maths.h" />
+    <ClInclude Include="src\fastlib\stdlib.h" />
+    <ClInclude Include="src\fastlib\string.h" />
+    <ClInclude Include="src\kernel\FastOS.h" />
+    <ClInclude Include="src\kernel\FastStaticErrorHandler.h" />
+    <ClInclude Include="src\kernel\FastTerminal.h" />
+    <ClInclude Include="src\kernel\graphics\FastVBE.h" />
+    <ClInclude Include="src\kernel\graphics\FastVGA.h" />
+    <ClInclude Include="src\kernel\graphics\FastVGATextBuffer.h" />
+    <ClInclude Include="src\kernel\memory\a20.h" />
+    <ClInclude Include="src\kernel\memory\FastArray.h" />
+    <ClInclude Include="src\kernel\memory\FastLowMemoryAllocator.h" />
+    <ClInclude Include="src\kernel\memory\FastMemory.h" />
+    <ClInclude Include="src\kernel\memory\FastPtr.h" />
+    <ClInclude Include="src\kernel\vgautils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\drivers\eldriver.cpp" />
+    <ClCompile Include="src\fastlib\np.cpp" />
+    <ClCompile Include="src\kernel\entry.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,1 @@
+wsl -d Ubuntu-18.04 ./fastos_compileAll

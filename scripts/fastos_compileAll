@@ -1,0 +1,88 @@
+#!/bin/bash
+clear
+echo '========== COMPILING ALL MODULES =========='
+echo ''
+echo '===== Discovery stage ====='
+srcPath="../src"
+specialPath="../src/special"
+objPath="../out/objects"
+outPath="../out"
+isoPath="$outPath/isodir"
+compileModuleScript='./fastos_compileModule'
+baseDir=$(dirname $(readlink -f "$0"))
+index=0
+modules=()
+cd $srcPath
+
+for d in * ; do
+	let index++
+	if [ $d != "special" ]; then
+		modules[$index]="$d"
+	fi
+done
+
+echo ''
+echo "Found $index modules to compile: ${modules[*]}"
+echo ''
+cd $baseDir
+
+echo '===== Build stage ====='
+
+for module in ${modules[*]} ; do
+echo ''
+	$compileModuleScript $module
+	if [ $? != 0 ]; then
+		exit 1
+	fi
+done
+
+cp $specialPath/boot.o $objPath
+cp $specialPath/linker.ld $objPath
+
+echo 'Building done !'
+echo ''
+echo '===== Linking stage ====='
+echo ''
+
+cd $objPath
+
+/usr/local/cross/amd64/bin/amd64-elf-g++ -T linker.ld -o myos.bin -ffreestanding -O2 -nostdlib `find . -name '*.o'`
+
+if [ $? != 0 ]; then
+	echo 'Error during link, stopping...'
+	exit 1
+fi
+
+mv myos.bin ..
+
+cd $baseDir
+
+echo 'Linking done !'
+echo ''
+echo '===== Packing stage ====='
+echo ''
+
+if [ -d $isoPath ]; then
+	echo 'Removing old packed'
+	rm -r $isoPath
+fi
+
+mkdir -p $isoPath/boot/grub
+
+cp $specialPath/grub.cfg $isoPath/boot/grub
+cp $outPath/myos.bin $isoPath/boot
+
+cd $outPath
+
+grub-mkrescue -o myos.iso isodir
+
+if [ $? != 0 ]; then
+	echo 'Error during packing, stopping...'
+	exit 1
+fi
+
+cd $baseDir
+
+echo 'Packing done ! iso ready to run'
+echo ''
+echo '========== COMPILATION ENDED =========='
