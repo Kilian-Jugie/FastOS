@@ -1,12 +1,9 @@
 #pragma once
-#include <FastDefines.h>
-#include <maths.h>
-
-#include "../FastTerminal.h"
+#include <fastlib/FastDefines.h>
+#include <fastlib/maths.h>
+#include <kernel/FastOS.h>
 
 FASTOS_NAMESPACE_BEGIN
-
-static FastTerminal term;
 
 struct FastMemoryIndexer {
 	FastMemoryIndexer* nxt;
@@ -33,11 +30,11 @@ public:
 		m_NbPow = maxPow - minPow;
 		m_MinDecim = 1 << minPow;
 
-		term.cprint("Init: ");
+		/*term.cprint("Init: ");
 		term.cprint(m_MinPow);
 		term.cprint(" : ");
 		term.cprint(m_MinDecim);
-		term.cprint("\n");
+		term.cprint("\n");*/
 
 		m_FreeIndexers = (FastMemoryIndexer*)(m_Begin);
 		//Not 100% needed but safer ?
@@ -78,7 +75,7 @@ public:
 	}
 
 	template<typename _Ty>_Ty* malloc(size_t size) {
-		term.cprint("A ");
+		/*term.cprint("A ");
 		//term.cprint(size);
 		//term.cprint(" vs >");
 		term.cprint((uint32_t)&m_MinPow, 16);
@@ -92,7 +89,7 @@ public:
 		term.cprint((uint32_t)m_MinDecim, 10);
 		term.cprint(" / ");
 		term.cprint((uint32_t)m_MinDecim, 2);
-		term.cprint("\n");
+		term.cprint("\n");*/
 		if (size < m_MinDecim) return nullptr;
 		const uint32_t p{ log2_32(size) };
 		if (m_Indexers[p].nxt != nullptr) {

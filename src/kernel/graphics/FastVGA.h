@@ -1,5 +1,5 @@
 #pragma once
-#include <FastDefines.h>
+#include <fastlib/FastDefines.h>
 
 FASTOS_NAMESPACE_BEGIN
 

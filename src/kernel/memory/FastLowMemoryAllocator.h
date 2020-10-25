@@ -1,8 +1,8 @@
 #pragma once
-#include <FastDefines.h>
-#include <maths.h>
+#include <fastlib/FastDefines.h>
+#include <fastlib/maths.h>
 
-#include "../FastTerminal.h"
+#include <kernel/FastTerminal.h>
 
 FASTOS_NAMESPACE_BEGIN
 

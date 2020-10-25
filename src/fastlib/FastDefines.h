@@ -24,10 +24,12 @@ using uint64_t = unsigned long long;
 using uifast_t = uint32_t;
 using ifast_t = int32_t;
 using size_t = uint32_t;
+using iptr_t = uint32_t;
 #else
 using uifast_t = uint64_t;
 using ifast_t = int64_t;
 using size_t = uint64_t;
+using iptr_t = uint64_t;
 #endif // FASTOS_BITS_32
 
 

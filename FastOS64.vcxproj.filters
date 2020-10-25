@@ -27,6 +27,27 @@
     <ClCompile Include="src\fastlib\np.cpp">
       <Filter>fastlib</Filter>
     </ClCompile>
+    <ClCompile Include="src\kernel\FastOS.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fastlib\maths.cpp">
+      <Filter>fastlib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\kernel\FastTerminal.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fastlib\stdlib.cpp">
+      <Filter>fastlib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fastlib\string.cpp">
+      <Filter>fastlib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fastlib\stdio.cpp">
+      <Filter>fastlib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\kernel\graphics\FastVBE.cpp">
+      <Filter>kernel\graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\kernel\FastOS.h">
@@ -90,6 +111,9 @@
       <Filter>fastlib</Filter>
     </ClInclude>
     <ClInclude Include="src\fastlib\string.h">
+      <Filter>fastlib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fastlib\stdio.h">
       <Filter>fastlib</Filter>
     </ClInclude>
   </ItemGroup>

@@ -19,8 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\fastlib\maths.cpp" />
     <ClCompile Include="src\fastlib\np.cpp" />
+    <ClCompile Include="src\fastlib\stdio.cpp" />
+    <ClCompile Include="src\fastlib\stdlib.cpp" />
+    <ClCompile Include="src\fastlib\string.cpp" />
     <ClCompile Include="src\kernel\entry.cpp" />
+    <ClCompile Include="src\kernel\FastOS.cpp" />
+    <ClCompile Include="src\kernel\FastTerminal.cpp" />
+    <ClCompile Include="src\kernel\graphics\FastVBE.cpp" />
     <ClCompile Include="src\special\null.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -28,6 +35,7 @@
     <ClInclude Include="src\fastlib\FastConstants.h" />
     <ClInclude Include="src\fastlib\FastDefines.h" />
     <ClInclude Include="src\fastlib\maths.h" />
+    <ClInclude Include="src\fastlib\stdio.h" />
     <ClInclude Include="src\fastlib\stdlib.h" />
     <ClInclude Include="src\fastlib\string.h" />
     <ClInclude Include="src\kernel\FastOS.h" />
@@ -98,28 +106,28 @@
     <NMakeOutput>.\scripts\fastos_run.bat</NMakeOutput>
     <NMakePreprocessorDefinitions>
     </NMakePreprocessorDefinitions>
-    <IncludePath>E:\Osdev\FASTOS64\src\special;E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src\fastlib;$(IncludePath)</IncludePath>
+    <IncludePath>E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src;$(IncludePath)</IncludePath>
     <NMakeBuildCommandLine>cd .\scripts&amp; .\fastos_compileAll.bat</NMakeBuildCommandLine>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <NMakeOutput>.\scripts\fastos_run.bat</NMakeOutput>
     <NMakePreprocessorDefinitions>
     </NMakePreprocessorDefinitions>
-    <IncludePath>E:\Osdev\FASTOS64\src\special;E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src\fastlib;$(IncludePath)</IncludePath>
+    <IncludePath>E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src;$(IncludePath)</IncludePath>
     <NMakeBuildCommandLine>cd .\scripts&amp; .\fastos_compileAll.bat</NMakeBuildCommandLine>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeOutput>.\scripts\fastos_run.bat</NMakeOutput>
     <NMakePreprocessorDefinitions>
     </NMakePreprocessorDefinitions>
-    <IncludePath>E:\Osdev\FASTOS64\src\special;E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src\fastlib;$(IncludePath)</IncludePath>
+    <IncludePath>E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src;$(IncludePath)</IncludePath>
     <NMakeBuildCommandLine>cd .\scripts&amp; .\fastos_compileAll.bat</NMakeBuildCommandLine>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <NMakeOutput>.\scripts\fastos_run.bat</NMakeOutput>
     <NMakePreprocessorDefinitions>
     </NMakePreprocessorDefinitions>
-    <IncludePath>E:\Osdev\FASTOS64\src\special;E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src\fastlib;$(IncludePath)</IncludePath>
+    <IncludePath>E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src;$(IncludePath)</IncludePath>
     <NMakeBuildCommandLine>cd .\scripts&amp; .\fastos_compileAll.bat</NMakeBuildCommandLine>
   </PropertyGroup>
   <ItemDefinitionGroup>

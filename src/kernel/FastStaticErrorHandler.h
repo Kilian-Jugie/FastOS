@@ -1,6 +1,6 @@
 #pragma once
-#include <FastDefines.h>
-#include <string.h>
+#include <fastlib/FastDefines.h>
+#include <fastlib/string.h>
 
 FASTOS_NAMESPACE_BEGIN
 

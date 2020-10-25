@@ -1,8 +1,8 @@
 #ifndef _VGAUTILS_H_GUARD
 #define _VGAUTILS_H_GUARD
 
-#include <FastDefines.h>
-#include <boot.h>
+#include <fastlib/FastDefines.h>
+#include <special/boot.h>
 
 constexpr auto VGA_ADDR = KERNEL_VMA + 0x000b8000;
 
