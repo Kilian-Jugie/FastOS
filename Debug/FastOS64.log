@@ -2,76 +2,108 @@
   
   ===== Discovery stage =====
   
-  Found 4 modules to compile: drivers fastlib kernel
+  Found 3 modules to compile: fastlib kernel special
   
   ===== Build stage =====
   
-  >>>Compiling module drivers at ../src/drivers
-  	Removing old objets
-  Compilation OK<<<
-  
   >>>Compiling module fastlib at ../src/fastlib
   	Removing old objets
-  Compiling nasm : ../src/fastlib/FastAsm.asm
-  Compiling nasm : ../src/fastlib/interrupt.asm
-  Compiling gas : ../src/fastlib/intcall.S
   Compilation OK<<<
   
   >>>Compiling module kernel at ../src/kernel
   	Removing old objets
-  In file included from ../src/kernel/memory/../FastTerminal.h:4,
+  In file included from ../src/kernel/memory/../FastTerminal.h:4:0,
                    from ../src/kernel/memory/FastMemory.h:5,
                    from ../src/kernel/memory/FastPtr.h:3,
                    from ../src/kernel/FastOS.h:5,
                    from ../src/kernel/entry.cpp:1:
-  ../src/fastlib/string.h: In function 'int FastOS::strcmp(const char*, const char*, FastOS::size_t)':
-../src/fastlib/string.h(41,16): warning G2890A887: comparison of integer expressions of different signedness: 'FastOS::size_t' {aka 'long long unsigned int'} and 'int' [-Wsign-compare]
-     41 |     while (len > offset) {
-        |            ~~~~^~~~~~~~
-  In file included from ../src/kernel/memory/../FastTerminal.h:5,
+  ../src/fastlib/string.h: In function ‘int FastOS::strcmp(const char*, const char*, FastOS::size_t)’:
+../src/fastlib/string.h(41,16): warning G2A2880C6: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       while (len > offset) {
+              ~~~~^~~~~~~~
+  In file included from ../src/kernel/memory/../FastTerminal.h:5:0,
                    from ../src/kernel/memory/FastMemory.h:5,
                    from ../src/kernel/memory/FastPtr.h:3,
                    from ../src/kernel/FastOS.h:5,
                    from ../src/kernel/entry.cpp:1:
-  ../src/kernel/memory/../graphics/FastVGATextBuffer.h: In constructor 'FastOS::FastVGATextBuffer::FastVGATextBuffer(FastOS::uint16_t*, FastOS::size_t, FastOS::size_t)':
-../src/kernel/memory/../graphics/FastVGATextBuffer.h(13,12): warning G51EBB5D7: 'FastOS::FastVGATextBuffer::m_VGA' will be initialized after [-Wreorder]
-     13 |  uint16_t* m_VGA;
-        |            ^~~~~
-../src/kernel/memory/../graphics/FastVGATextBuffer.h(11,9): warning GF41C894D: 'FastOS::size_t FastOS::FastVGATextBuffer::m_SizeX' [-Wreorder]
-     11 |  size_t m_SizeX;
-        |         ^~~~~~~
+  ../src/kernel/memory/../graphics/FastVGATextBuffer.h: In constructor ‘FastOS::FastVGATextBuffer::FastVGATextBuffer(FastOS::uint16_t*, FastOS::size_t, FastOS::size_t)’:
+../src/kernel/memory/../graphics/FastVGATextBuffer.h(13,12): warning GD25A4A0E: ‘FastOS::FastVGATextBuffer::m_VGA’ will be initialized after [-Wreorder]
+    uint16_t* m_VGA;
+              ^~~~~
+../src/kernel/memory/../graphics/FastVGATextBuffer.h(11,9): warning G81C81C90: ‘FastOS::size_t FastOS::FastVGATextBuffer::m_SizeX’ [-Wreorder]
+    size_t m_SizeX;
+           ^~~~~~~
 ../src/kernel/memory/../graphics/FastVGATextBuffer.h(20,2): warning G9B100CBB: when initialized here [-Wreorder]
-     20 |  FastVGATextBuffer(uint16_t* vga, size_t sizeX, size_t sizeY)
-        |  ^~~~~~~~~~~~~~~~~
-  ../src/kernel/memory/../graphics/FastVGATextBuffer.h: In member function 'void FastOS::FastVGATextBuffer::forward(FastOS::size_t)':
-../src/kernel/memory/../graphics/FastVGATextBuffer.h(38,22): warning G40510A9C: unused parameter 'offset' [-Wunused-parameter]
-     38 |  void forward(size_t offset) {
-        |               ~~~~~~~^~~~~~
-  In file included from ../src/kernel/memory/../graphics/FastVBE.h:5,
+    FastVGATextBuffer(uint16_t* vga, size_t sizeX, size_t sizeY)
+    ^~~~~~~~~~~~~~~~~
+  ../src/kernel/memory/../graphics/FastVGATextBuffer.h: In member function ‘void FastOS::FastVGATextBuffer::forward(FastOS::size_t)’:
+../src/kernel/memory/../graphics/FastVGATextBuffer.h(38,22): warning G13C8A7A0: unused parameter ‘offset’ [-Wunused-parameter]
+    void forward(size_t offset) {
+                        ^~~~~~
+  In file included from ../src/kernel/memory/../graphics/FastVBE.h:5:0,
                    from ../src/kernel/memory/../FastTerminal.h:6,
                    from ../src/kernel/memory/FastMemory.h:5,
                    from ../src/kernel/memory/FastPtr.h:3,
                    from ../src/kernel/FastOS.h:5,
                    from ../src/kernel/entry.cpp:1:
-  ../src/fastlib/FastAsm.h: In function 'long unsigned int FastOS::save_irqdisable()':
+  ../src/fastlib/FastAsm.h: At global scope:
+../src/fastlib/FastAsm.h(60,9): warning G5F410DAA: ISO C++ prohibits anonymous structs [-Wpedantic]
+           };
+           ^
+../src/fastlib/FastAsm.h(73,9): warning G5F410DAA: ISO C++ prohibits anonymous structs [-Wpedantic]
+           };
+           ^
+../src/fastlib/FastAsm.h(83,9): warning G5F410DAA: ISO C++ prohibits anonymous structs [-Wpedantic]
+           };
+           ^
+  ../src/fastlib/FastAsm.h: In function ‘void FastOS::initregs(FastOS::regs32_t*)’:
+../src/fastlib/FastAsm.h(145,25): warning GAF8BE6F0: unused parameter ‘reg’ [-Wunused-parameter]
+   void initregs(regs32_t* reg)
+                           ^~~
+  ../src/fastlib/FastAsm.h: In static member function ‘static bool FastOS::ASM::set_a20(bool)’:
+../src/fastlib/FastAsm.h(170,5): warning G3DBB0245: no return statement in function returning non-void [-Wreturn-type]
+       }
+       ^
+../src/fastlib/FastAsm.h(163,30): warning G249F22C1: unused parameter ‘st’ [-Wunused-parameter]
+       static bool set_a20(bool st) {
+                                ^~
+  ../src/fastlib/FastAsm.h: In static member function ‘static bool FastOS::ASM::new_set_a20(bool)’:
+../src/fastlib/FastAsm.h(180,5): warning G3DBB0245: no return statement in function returning non-void [-Wreturn-type]
+       }
+       ^
+../src/fastlib/FastAsm.h(172,34): warning G249F22C1: unused parameter ‘st’ [-Wunused-parameter]
+       static bool new_set_a20(bool st) {
+                                    ^~
+  ../src/fastlib/FastAsm.h: In function ‘long unsigned int FastOS::save_irqdisable()’:
 ../src/fastlib/FastAsm.h(211,1): warning G3DBB0245: no return statement in function returning non-void [-Wreturn-type]
-    211 | }
-        | ^
-  In file included from ../src/kernel/memory/FastMemory.h:5,
+   }
+   ^
+  In file included from ../src/kernel/memory/FastMemory.h:5:0,
                    from ../src/kernel/memory/FastPtr.h:3,
                    from ../src/kernel/FastOS.h:5,
                    from ../src/kernel/entry.cpp:1:
-  ../src/kernel/memory/../FastTerminal.h: In member function 'FastOS::uint16_t* FastOS::FastTerminal::tt(const char*, FastOS::size_t, FastOS::uint8_t)':
-../src/kernel/memory/../FastTerminal.h(57,21): warning G2890A887: comparison of integer expressions of different signedness: 'int' and 'FastOS::size_t' {aka 'long long unsigned int'} [-Wsign-compare]
-     57 |   for (auto i(0); i < N; ++i) {
-        |                   ~~^~~
-  Compiling nasm : ../src/kernel/memory/a20.asm
+  ../src/kernel/memory/../FastTerminal.h: In member function ‘FastOS::uint16_t* FastOS::FastTerminal::tt(const char*, FastOS::size_t, FastOS::uint8_t)’:
+../src/kernel/memory/../FastTerminal.h(57,21): warning G2A2880C6: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (auto i(0); i < N; ++i) {
+                     ~~^~~
+  In file included from ../src/kernel/entry.cpp:1:0:
+  ../src/kernel/FastOS.h: In member function ‘void FastOS::FastOS::main(long unsigned int, long unsigned int)’:
+../src/kernel/FastOS.h(80,27): warning GDC6F1E12: unused parameter ‘magic’ [-Wunused-parameter]
+     void main(unsigned long magic, unsigned long mbi) {
+                             ^~~~~
+../src/kernel/FastOS.h(80,48): warning G1C7F2132: unused parameter ‘mbi’ [-Wunused-parameter]
+     void main(unsigned long magic, unsigned long mbi) {
+                                                  ^~~
+  Compilation OK<<<
+  
+  >>>Compiling module special at ../src/special
+  	Removing old objets
+  Compiling gas : ../src/special/boot.S
   Compilation OK<<<
   Building done !
   
   ===== Linking stage =====
   
-  /usr/local/cross/amd64/lib/gcc/amd64-elf/9.1.0/../../../../amd64-elf/bin/ld:linker.ld:4: undefined symbol `KERNEL_VMA' referenced in expression
-collect2 : error : ld returned 1 exit status
-  Error during link, stopping...
-A:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.MakeFile.Targets(44,5): error MSB3073: La commande "cd .\scripts& .\fastos_compileAll.bat" s'est arrêtée avec le code 1.
+  Linking done !
+  
+  ========== COMPILATION ENDED ==========

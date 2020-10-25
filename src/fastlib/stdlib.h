@@ -3,8 +3,6 @@
 
 FASTOS_NAMESPACE_BEGIN
 
-
-
 int length(char* ch) {
 	int r = 0;
 	while(ch[r++]) {}

@@ -17,7 +17,9 @@ if [ -d $objPath ]; then
 fi
 mkdir $objPath
 mkdir $extraPath
-/usr/local/cross/amd64/bin/amd64-elf-g++ -c `find $modulePath -name '*.cpp'` -ffreestanding -I"../src/fastlib" -Wall -Wextra -fno-exceptions -fno-rtti -Wa,-adhln=$extraPath/assembly.s -g -masm=intel
+#/usr/local/cross/amd64/bin/amd64-elf-g++ -c `find $modulePath -name '*.cpp'` -ffreestanding -mcmodel=large -mno-red-zone -mno-mmx -mno-sse -mno-sse2 -I"../src/fastlib" -Wall -Wextra -fno-exceptions -fno-rtti -Wa,-adhln=$extraPath/assembly.s -g -masm=intel
+
+/usr/bin/c++ -D__KERNEL__ -I"../src/special" -I"../src/fastlib" -march=native -fno-PIC -pedantic -W -Wall -ffreestanding -mno-red-zone -nostdinc -mcmodel=kernel -mno-sse3 -mno-ssse3 -mno-sse4.1 -mno-sse4.2 -mno-sse4 -mno-sse4a -mno-3dnow -mno-avx -mno-avx2 -fno-exceptions -fno-rtti -fuse-cxa-atexit -fno-threadsafe-statics -m64 -std=gnu++17 -c `find $modulePath -name '*.cpp'` -Wa,-adhln=$extraPath/assembly.s -g -masm=intel
 
 nasmFiles=`find $modulePath -name '*.asm'`
 if [ "$nasmFiles" != "" ]; then
@@ -31,7 +33,8 @@ gasFiles=`find $modulePath -name '*.S'`
 if [ "$gasFiles" != "" ]; then
 	for f in $gasFiles ; do
 		echo "Compiling gas : $f"
-		/usr/local/cross/amd64/bin/amd64-elf-as -o $objPath/"$(basename -s .S $f)".o $f
+		#/usr/local/cross/amd64/bin/amd64-elf-as -o $objPath/"$(basename -s .S $f)".o $f
+		/usr/bin/cc -D__KERNEL__ -I"../src/special" -m64 -o $objPath/"$(basename -s .S $f)".o -c $f
 	done
 fi
 

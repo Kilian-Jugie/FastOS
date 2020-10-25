@@ -1,10 +1,10 @@
 #include "FastOS.h"
 
 extern "C" {
-	void kernel_main() {
+	int kmain(unsigned long magic, unsigned long mbi) {
 		FastOS::FastOS os;
-		os.main();
-		return;
+		os.main(magic, mbi);
+		return 0;
 
 	}
 }

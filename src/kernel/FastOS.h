@@ -3,8 +3,12 @@
 //#include "memory/FastLowMemoryAllocator.h"
 
 #include "memory/FastPtr.h"
+
+FASTOS_NAMESPACE_BEGIN
+
+/*#include "memory/FastPtr.h"
 #include <FastAsm.h>
-//#include "FastTerminal.h"
+
 //#include "graphics/FastVBE.h"
 
 FASTOS_NAMESPACE_BEGIN
@@ -42,7 +46,7 @@ struct VBEModeInfo_t {
 	uint32_t reserved1;
 	uint16_t reserved2;
 } __attribute__((packed));
-
+*/
 extern "C" {
 	void kprint(uint32_t nb) {
 		term.cprint(nb);
@@ -65,10 +69,16 @@ extern "C" {
 	}
 }
 
+#include "kernel.h"
+#include <multiboot.h>
+#include <boot.h>
+
 	class FastOS {
 	public:
+		FastTerminal* terminal;
 
-		void main() {
+		void main(unsigned long magic, unsigned long mbi) {
+
 			term.initialize();
 			//kprint(5);
 			/*term.cprint("enable: ");
@@ -83,7 +93,7 @@ extern "C" {
 			}*/
 
 			//TODO: Support ACPI 3 24 bytes entries !
-			struct BIOSMemEntry {
+			/*struct BIOSMemEntry {
 				uint32_t laddr;
 				uint32_t haddr;
 				uint32_t lreg;
@@ -91,9 +101,9 @@ extern "C" {
 				uint32_t type;
 			};
 
-			//BIOSMemEntry mem;// [10] ;
+			//BIOSMemEntry mem;// [10] ;*/
 
-			term.cprint("C'est incroyable\n");
+			term.cprint("Hello World\n");
 
 
 			/*term.cprint("ASM>");

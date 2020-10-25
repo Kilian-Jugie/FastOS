@@ -71,12 +71,12 @@ public:
 		m_ColorGeneral = vga_utils::entryColor(m_ColorForeground, m_ColorBackground);
 
 
-		/*for (uint32_t y(0u); y < m_Height; ++y) {
+		for (uint32_t y(0u); y < m_Height; ++y) {
 			for (uint32_t x(0u); x < m_Width; ++x) {
 				const uint32_t i = y * m_Width + x;
 				m_VGABuffer[i] = vga_utils::entry(' ', m_ColorGeneral);
 			}
-		}*/
+		}
 		//print("Ce noyau d'OS fonctionne ");
 		//print(uitoa(8456, 10));
 

@@ -1,1 +1,0 @@
-wsl -d Ubuntu-18.04 ./linkboot

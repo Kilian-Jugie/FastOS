@@ -16,11 +16,10 @@ cd $srcPath
 
 for d in * ; do
 	let index++
-	if [ $d != "special" ]; then
+	#if [ $d != "special" ]; then
 		modules[$index]="$d"
-	fi
+	#fi
 done
-
 echo ''
 echo "Found $index modules to compile: ${modules[*]}"
 echo ''
@@ -36,8 +35,7 @@ echo ''
 	fi
 done
 
-cp $specialPath/boot.o $objPath
-cp $specialPath/linker.ld $objPath
+cp $specialPath/kernel.ld $objPath
 
 echo 'Building done !'
 echo ''
@@ -46,43 +44,47 @@ echo ''
 
 cd $objPath
 
-/usr/local/cross/amd64/bin/amd64-elf-g++ -T linker.ld -o myos.bin -ffreestanding -O2 -nostdlib `find . -name '*.o'`
+#/usr/local/cross/amd64/bin/amd64-elf-g++ -T linker.ld -o myos.bin -ffreestanding -O2 -nostdlib `find . -name '*.o'`
+/usr/bin/c++ -march=native -fno-PIC -pedantic -W -Wall -ffreestanding -mno-red-zone -nostdinc -mcmodel=kernel -mno-sse3 -mno-ssse3 -mno-sse4.1 -mno-sse4.2 -mno-sse4 -mno-sse4a -mno-3dnow -mno-avx -mno-avx2 -fno-exceptions -fno-rtti -fuse-cxa-atexit -fno-threadsafe-statics -m64    -nostdlib -mcmodel=kernel -fno-PIC -no-pie -Wl,--build-id=none -Wl,-z,max-page-size=0x1000,-n,-T,kernel.ld -m64 -rdynamic `find . -name '*.o'` -o kernel.elf
 
 if [ $? != 0 ]; then
 	echo 'Error during link, stopping...'
 	exit 1
 fi
 
-mv myos.bin ..
+strip kernel.elf
+mv kernel.elf ..
 
-cd $baseDir
+#cd $baseDir
+
+#echo 'Linking done !'
+#echo ''
+#echo '===== Packing stage ====='
+#echo ''
+
+#if [ -d $isoPath ]; then
+#	echo 'Removing old packed'
+#	rm -r $isoPath
+#fi
+
+#mkdir -p $isoPath/boot/grub
+
+#cp $specialPath/grub.cfg $isoPath/boot/grub
+#cp $outPath/myos.bin $isoPath/boot
+
+#cd $outPath
+
+#grub-mkrescue -o myos.iso isodir
+
+#if [ $? != 0 ]; then
+#	echo 'Error during packing, stopping...'
+#	exit 1
+#fi
+
+#cd $baseDir
+
+#echo 'Packing done ! iso ready to run'cd $baseDir
 
 echo 'Linking done !'
-echo ''
-echo '===== Packing stage ====='
-echo ''
-
-if [ -d $isoPath ]; then
-	echo 'Removing old packed'
-	rm -r $isoPath
-fi
-
-mkdir -p $isoPath/boot/grub
-
-cp $specialPath/grub.cfg $isoPath/boot/grub
-cp $outPath/myos.bin $isoPath/boot
-
-cd $outPath
-
-grub-mkrescue -o myos.iso isodir
-
-if [ $? != 0 ]; then
-	echo 'Error during packing, stopping...'
-	exit 1
-fi
-
-cd $baseDir
-
-echo 'Packing done ! iso ready to run'
 echo ''
 echo '========== COMPILATION ENDED =========='

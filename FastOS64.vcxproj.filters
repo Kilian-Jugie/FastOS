@@ -1,95 +1,104 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Fichiers sources">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="kernel">
+      <UniqueIdentifier>{09a021cb-9a3e-4dde-8537-314a52ae20a8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="kernel\graphics">
+      <UniqueIdentifier>{95f8756b-095c-472c-b541-027a8f8c81c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers de ressources">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="kernel\memory">
+      <UniqueIdentifier>{ac19de90-f577-4126-9d11-d655a4102093}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="special">
+      <UniqueIdentifier>{c035cc93-b2f6-4df6-9331-2a033a405469}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fastlib">
+      <UniqueIdentifier>{b9f4d7df-a809-45bd-a7cf-4c9233c7e470}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\fastlib\FastAsm.asm">
-      <Filter>Fichiers sources</Filter>
-    </None>
-    <None Include="src\fastlib\interrupt.asm">
-      <Filter>Fichiers sources</Filter>
-    </None>
-    <None Include="src\kernel\memory\a20.asm">
-      <Filter>Fichiers sources</Filter>
-    </None>
+    <ClCompile Include="src\kernel\entry.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\special\null.cpp">
+      <Filter>special</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fastlib\np.cpp">
+      <Filter>fastlib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\fastlib\FastAsm.h">
-      <Filter>Fichiers sources</Filter>
-    </ClInclude>
-    <ClInclude Include="src\fastlib\FastConstants.h">
-      <Filter>Fichiers sources</Filter>
-    </ClInclude>
-    <ClInclude Include="src\fastlib\FastDefines.h">
-      <Filter>Fichiers sources</Filter>
-    </ClInclude>
-    <ClInclude Include="src\fastlib\maths.h">
-      <Filter>Fichiers sources</Filter>
-    </ClInclude>
-    <ClInclude Include="src\fastlib\stdlib.h">
-      <Filter>Fichiers sources</Filter>
-    </ClInclude>
-    <ClInclude Include="src\fastlib\string.h">
-      <Filter>Fichiers sources</Filter>
-    </ClInclude>
     <ClInclude Include="src\kernel\FastOS.h">
-      <Filter>Fichiers sources</Filter>
+      <Filter>kernel</Filter>
     </ClInclude>
     <ClInclude Include="src\kernel\FastStaticErrorHandler.h">
-      <Filter>Fichiers sources</Filter>
+      <Filter>kernel</Filter>
     </ClInclude>
     <ClInclude Include="src\kernel\FastTerminal.h">
-      <Filter>Fichiers sources</Filter>
+      <Filter>kernel</Filter>
     </ClInclude>
-    <ClInclude Include="src\kernel\graphics\FastVBE.h">
-      <Filter>Fichiers sources</Filter>
-    </ClInclude>
-    <ClInclude Include="src\kernel\graphics\FastVGA.h">
-      <Filter>Fichiers sources</Filter>
-    </ClInclude>
-    <ClInclude Include="src\kernel\graphics\FastVGATextBuffer.h">
-      <Filter>Fichiers sources</Filter>
-    </ClInclude>
-    <ClInclude Include="src\kernel\memory\a20.h">
-      <Filter>Fichiers sources</Filter>
-    </ClInclude>
-    <ClInclude Include="src\kernel\memory\FastArray.h">
-      <Filter>Fichiers sources</Filter>
-    </ClInclude>
-    <ClInclude Include="src\kernel\memory\FastLowMemoryAllocator.h">
-      <Filter>Fichiers sources</Filter>
-    </ClInclude>
-    <ClInclude Include="src\kernel\memory\FastMemory.h">
-      <Filter>Fichiers sources</Filter>
-    </ClInclude>
-    <ClInclude Include="src\kernel\memory\FastPtr.h">
-      <Filter>Fichiers sources</Filter>
+    <ClInclude Include="src\kernel\kernel.h">
+      <Filter>kernel</Filter>
     </ClInclude>
     <ClInclude Include="src\kernel\vgautils.h">
-      <Filter>Fichiers sources</Filter>
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kernel\graphics\FastVBE.h">
+      <Filter>kernel\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kernel\graphics\FastVGA.h">
+      <Filter>kernel\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kernel\graphics\FastVGATextBuffer.h">
+      <Filter>kernel\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kernel\memory\a20.h">
+      <Filter>kernel\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kernel\memory\FastArray.h">
+      <Filter>kernel\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kernel\memory\FastLowMemoryAllocator.h">
+      <Filter>kernel\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kernel\memory\FastMemory.h">
+      <Filter>kernel\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kernel\memory\FastPtr.h">
+      <Filter>kernel\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\special\boot.h">
+      <Filter>special</Filter>
+    </ClInclude>
+    <ClInclude Include="src\special\multiboot.h">
+      <Filter>special</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fastlib\FastAsm.h">
+      <Filter>fastlib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fastlib\FastConstants.h">
+      <Filter>fastlib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fastlib\FastDefines.h">
+      <Filter>fastlib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fastlib\maths.h">
+      <Filter>fastlib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fastlib\stdlib.h">
+      <Filter>fastlib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fastlib\string.h">
+      <Filter>fastlib</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\fastlib\np.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\kernel\entry.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\drivers\eldriver.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
+    <None Include="src\special\boot.S">
+      <Filter>special</Filter>
+    </None>
+    <None Include="src\special\kernel.ld">
+      <Filter>special</Filter>
+    </None>
   </ItemGroup>
 </Project>

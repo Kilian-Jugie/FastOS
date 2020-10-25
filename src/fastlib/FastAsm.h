@@ -87,12 +87,12 @@ struct regs32_t {
 typedef struct regs16_t regs16_t;
 
 extern "C" {
-    extern void int32(unsigned char intnum, regs16_t* regs);
+    /*extern void int32(unsigned char intnum, regs16_t* regs);
     extern void intcall(uint8_t int_no, const regs32_t* ireg, regs32_t* oreg);
     extern void get_mmap(int seg, int off);
     extern reg16_t get_ds();
     extern reg16_t get_fs();
-    extern reg16_t get_gs();
+    extern reg16_t get_gs();*/
 }
 
 class flagsutils {
@@ -144,12 +144,12 @@ static inline reg16_t ds(void)
 
 void initregs(regs32_t* reg)
 {
-    memset(reg, 0, sizeof(*reg));
+   /* memset(reg, 0, sizeof(*reg));
     reg->eflags |= X86_EFLAGS_CF;
     reg->ds = get_ds();
     reg->es = get_ds();
     reg->fs = get_fs();
-    reg->gs = get_gs();
+    reg->gs = get_gs();*/
 }
 
 
@@ -161,22 +161,22 @@ class ASM {
 public:
     //TODO: check support (doc ?)
     static bool set_a20(bool st) {
-        regs16_t r;
+        /*regs16_t r;
         r.ax = st ? INT_A20_ON : INT_A20_OFF;
         int32(INT_BIOS_MEM, &r);
         r.ax = INT_A20_STATUS;
         int32(INT_BIOS_MEM, &r);
-        return !!regutils::low(r.ax);
+        return !!regutils::low(r.ax);*/
     }
 
     static bool new_set_a20(bool st) {
-        regs32_t r;
+        /*regs32_t r;
         initregs(&r);
         r.ax = st ? INT_A20_ON : INT_A20_OFF;
         intcall(INT_BIOS_MEM, &r, &r);
         r.ax = INT_A20_STATUS;
         //intcall(INT_BIOS_MEM, &r, &r);
-        return !!r.al;
+        return !!r.al;*/
     }
 
     

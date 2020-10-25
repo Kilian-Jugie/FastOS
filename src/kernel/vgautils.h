@@ -2,8 +2,9 @@
 #define _VGAUTILS_H_GUARD
 
 #include <FastDefines.h>
+#include <boot.h>
 
-constexpr auto VGA_ADDR = 0xB8000;
+constexpr auto VGA_ADDR = KERNEL_VMA + 0x000b8000;
 
 FASTOS_NAMESPACE_BEGIN
 	class vga_utils {

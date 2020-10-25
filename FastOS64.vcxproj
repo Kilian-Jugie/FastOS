@@ -18,6 +18,38 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\fastlib\np.cpp" />
+    <ClCompile Include="src\kernel\entry.cpp" />
+    <ClCompile Include="src\special\null.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\fastlib\FastAsm.h" />
+    <ClInclude Include="src\fastlib\FastConstants.h" />
+    <ClInclude Include="src\fastlib\FastDefines.h" />
+    <ClInclude Include="src\fastlib\maths.h" />
+    <ClInclude Include="src\fastlib\stdlib.h" />
+    <ClInclude Include="src\fastlib\string.h" />
+    <ClInclude Include="src\kernel\FastOS.h" />
+    <ClInclude Include="src\kernel\FastStaticErrorHandler.h" />
+    <ClInclude Include="src\kernel\FastTerminal.h" />
+    <ClInclude Include="src\kernel\graphics\FastVBE.h" />
+    <ClInclude Include="src\kernel\graphics\FastVGA.h" />
+    <ClInclude Include="src\kernel\graphics\FastVGATextBuffer.h" />
+    <ClInclude Include="src\kernel\kernel.h" />
+    <ClInclude Include="src\kernel\memory\a20.h" />
+    <ClInclude Include="src\kernel\memory\FastArray.h" />
+    <ClInclude Include="src\kernel\memory\FastLowMemoryAllocator.h" />
+    <ClInclude Include="src\kernel\memory\FastMemory.h" />
+    <ClInclude Include="src\kernel\memory\FastPtr.h" />
+    <ClInclude Include="src\kernel\vgautils.h" />
+    <ClInclude Include="src\special\boot.h" />
+    <ClInclude Include="src\special\multiboot.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\special\boot.S" />
+    <None Include="src\special\kernel.ld" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{CDB34A03-BE8E-435B-BAE9-A96069725506}</ProjectGuid>
@@ -66,62 +98,32 @@
     <NMakeOutput>.\scripts\fastos_run.bat</NMakeOutput>
     <NMakePreprocessorDefinitions>
     </NMakePreprocessorDefinitions>
-    <IncludePath>E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src\fastlib;$(IncludePath)</IncludePath>
+    <IncludePath>E:\Osdev\FASTOS64\src\special;E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src\fastlib;$(IncludePath)</IncludePath>
     <NMakeBuildCommandLine>cd .\scripts&amp; .\fastos_compileAll.bat</NMakeBuildCommandLine>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <NMakeOutput>.\scripts\fastos_run.bat</NMakeOutput>
     <NMakePreprocessorDefinitions>
     </NMakePreprocessorDefinitions>
-    <IncludePath>E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src\fastlib;$(IncludePath)</IncludePath>
+    <IncludePath>E:\Osdev\FASTOS64\src\special;E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src\fastlib;$(IncludePath)</IncludePath>
     <NMakeBuildCommandLine>cd .\scripts&amp; .\fastos_compileAll.bat</NMakeBuildCommandLine>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeOutput>.\scripts\fastos_run.bat</NMakeOutput>
     <NMakePreprocessorDefinitions>
     </NMakePreprocessorDefinitions>
-    <IncludePath>E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src\fastlib;$(IncludePath)</IncludePath>
+    <IncludePath>E:\Osdev\FASTOS64\src\special;E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src\fastlib;$(IncludePath)</IncludePath>
     <NMakeBuildCommandLine>cd .\scripts&amp; .\fastos_compileAll.bat</NMakeBuildCommandLine>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <NMakeOutput>.\scripts\fastos_run.bat</NMakeOutput>
     <NMakePreprocessorDefinitions>
     </NMakePreprocessorDefinitions>
-    <IncludePath>E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src\fastlib;$(IncludePath)</IncludePath>
+    <IncludePath>E:\Osdev\FASTOS64\src\special;E:\Osdev\FASTOS64\include;E:\Osdev\FASTOS64\src\fastlib;$(IncludePath)</IncludePath>
     <NMakeBuildCommandLine>cd .\scripts&amp; .\fastos_compileAll.bat</NMakeBuildCommandLine>
   </PropertyGroup>
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <None Include="src\fastlib\FastAsm.asm" />
-    <None Include="src\fastlib\interrupt.asm" />
-    <None Include="src\kernel\memory\a20.asm" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\fastlib\FastAsm.h" />
-    <ClInclude Include="src\fastlib\FastConstants.h" />
-    <ClInclude Include="src\fastlib\FastDefines.h" />
-    <ClInclude Include="src\fastlib\maths.h" />
-    <ClInclude Include="src\fastlib\stdlib.h" />
-    <ClInclude Include="src\fastlib\string.h" />
-    <ClInclude Include="src\kernel\FastOS.h" />
-    <ClInclude Include="src\kernel\FastStaticErrorHandler.h" />
-    <ClInclude Include="src\kernel\FastTerminal.h" />
-    <ClInclude Include="src\kernel\graphics\FastVBE.h" />
-    <ClInclude Include="src\kernel\graphics\FastVGA.h" />
-    <ClInclude Include="src\kernel\graphics\FastVGATextBuffer.h" />
-    <ClInclude Include="src\kernel\memory\a20.h" />
-    <ClInclude Include="src\kernel\memory\FastArray.h" />
-    <ClInclude Include="src\kernel\memory\FastLowMemoryAllocator.h" />
-    <ClInclude Include="src\kernel\memory\FastMemory.h" />
-    <ClInclude Include="src\kernel\memory\FastPtr.h" />
-    <ClInclude Include="src\kernel\vgautils.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\drivers\eldriver.cpp" />
-    <ClCompile Include="src\fastlib\np.cpp" />
-    <ClCompile Include="src\kernel\entry.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
